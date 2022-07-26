@@ -13,4 +13,19 @@ const images = [
   },
 ];
 
-const imgRef = document.createElement('img');
+const listOfGalleryRef = document.querySelector('.gallery');
+
+const makeGalleryMarkup = ({url, alt}) => {
+  return `
+  <li><img 
+  src='${url}'
+  alt='${alt}'>
+  </li>
+  `;
+};
+
+const makeGallery = images
+.map(makeGalleryMarkup)
+.join('');
+
+listOfGalleryRef.innerHTML = makeGallery;
