@@ -12,11 +12,14 @@ function onFormSubmit (event) {
     for (let i = 0; i < formElements.length - 1; i += 1) {
         if (!formElements[i].value) {
             alert('Усі поля мають бути заповнені!');
-            break;
-        } else {
+            return;
+        } 
+        else {
             formData[formElements.email.name] = formElements.email.value;
             formData[formElements.password.name] = formElements.password.value;
-         };
+            
+        }
+        
    
     };
     console.log(formData);
