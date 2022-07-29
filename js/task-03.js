@@ -19,7 +19,8 @@ const makeGalleryMarkup = ({url, alt}) => {
   return `
   <li><img 
   src='${url}'
-  alt='${alt}'>
+  alt='${alt}'
+  height='200px'>
   </li>
   `;
 };
