@@ -5,13 +5,11 @@ inputRef.addEventListener('blur', onInputCheck);
 
 function onInputCheck (event) {
     if (event.currentTarget.value.length !== Number(inputRef.dataset.length)) {
-        event.currentTarget.id = 'validation-input.invalid'; 
-        // Зміна кольору під час зміни CSS-класу не працює, тому що скрипт завантажується після DOM, тож слідування ТЗ неможливе, але результату можна досягнути іншим шляхом
-        event.currentTarget.style.borderColor = '#f44336';
+        event.currentTarget.classList.remove("valid"); 
+        event.currentTarget.classList.add("invalid"); 
     } else {
-        event.currentTarget.id = 'validation-input.valid'; 
-        // Динимічна зміна кольору через CSS класс, як того потребує завдання, неможлива;
-        event.currentTarget.style.borderColor = '#4caf50';
+        event.currentTarget.classList.remove("invalid"); 
+        event.currentTarget.classList.add("valid"); 
     };
 };
 
