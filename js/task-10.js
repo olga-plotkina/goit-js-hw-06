@@ -8,10 +8,16 @@ const inputRef = document.querySelector('input');
 const divRef = document.querySelector('#boxes');
 
 
+let sizeOfBox = 30;
+let markup = '';
+
+
 inputRef.addEventListener('change', (event) => {
-  const lengthOfCollecton = event.currentTarget.value;
+  markup = '';
+  const lengthOfCollecton = event.target.value;
   buttonCreateRef.addEventListener('click', () => {
     createBoxes(lengthOfCollecton);
+    
   });
 
   buttonDestroyRef.addEventListener('click', () => {
@@ -20,21 +26,30 @@ inputRef.addEventListener('change', (event) => {
 });
 
 
-function createBoxes(amount) {
-  const arrayMarkup = [];
 
-  for (let i = 1; i <= amount; i += 1) {
-    for (let j = 0; j < (amount * 10) ; j += 10) {
-      const divMarkup = `<div style="width: ${30 + j}px; height:${30 + j}px; background-color:${getRandomHexColor()}"></div>`
-      arrayMarkup.push(divMarkup);
+
+
+
+function createBoxes(amount) {
+
+  
+  for (let i = 1; i <= amount; i +=1) {
+    for (let j = 0; j < (amount * 10); i += 10) {
+      const divMarkup = `<div style="width: ${sizeOfBox + j}px; height:${sizeOfBox + j}px; background-color:${getRandomHexColor()}">${i}</div>`;
+      markup += divMarkup;
     }
-    break;
-  }
-  const result = arrayMarkup.join('');
-  divRef.innerHTML = result;
+   
+};
+
+  divRef.innerHTML = markup;
+
 }
 
 function destroyBoxes() {
   divRef.innerHTML = '';
-  inputRef.value = '';
+  inputRef.value = 0;
+  sizeOfBox = 30;
+console.log(inputRef.value);
+markup = '';
+
 };
