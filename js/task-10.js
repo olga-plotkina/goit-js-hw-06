@@ -38,11 +38,13 @@ function createBoxes(amount) {
       const divMarkup = `<div style="width: ${sizeOfBox + j}px; height:${sizeOfBox + j}px; background-color:${getRandomHexColor()}">${i}</div>`;
       markup += divMarkup;
     }
+    
+
    
 };
+divRef.innerHTML = markup;
 
-  divRef.innerHTML = markup;
-
+ 
 }
 
 function destroyBoxes() {
