@@ -9,49 +9,42 @@ const divRef = document.querySelector('#boxes');
 
 
 let sizeOfBox = 30;
-let markup = '';
+let stringForBoxes = '';
 
 
 inputRef.addEventListener('change', (event) => {
-  markup = '';
-  const lengthOfCollecton = event.target.value;
+  let lengthOfCollecton = event.currentTarget.value;
+  
   buttonCreateRef.addEventListener('click', () => {
     createBoxes(lengthOfCollecton);
+
+    inputRef.addEventListener('input', (event) => {
+      lengthOfCollecton = 0;
+    });
+    });
     
-  });
+})
 
   buttonDestroyRef.addEventListener('click', () => {
     destroyBoxes();
-  })
-});
+  });
 
 
+function createBoxes(amount) { 
 
-
-
-
-function createBoxes(amount) {
-
-  
   for (let i = 1; i <= amount; i +=1) {
-    for (let j = 0; j < (amount * 10); i += 10) {
-      const divMarkup = `<div style="width: ${sizeOfBox + j}px; height:${sizeOfBox + j}px; background-color:${getRandomHexColor()}">${i}</div>`;
-      markup += divMarkup;
-    }
-    
 
-   
-};
-divRef.innerHTML = markup;
-
- 
+      const divMarkup = `<div style="width: ${sizeOfBox}px; height:${sizeOfBox}px; background-color:${getRandomHexColor()}">${i}</div>`;
+      stringForBoxes += divMarkup;
+      sizeOfBox += 10;
+     
+      divRef.innerHTML = stringForBoxes;
+  };
 }
 
 function destroyBoxes() {
   divRef.innerHTML = '';
-  inputRef.value = 0;
+  inputRef.value = '';
   sizeOfBox = 30;
-console.log(inputRef.value);
-markup = '';
-
+  stringForBoxes = '';
 };
