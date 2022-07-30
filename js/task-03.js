@@ -29,4 +29,5 @@ const makeGallery = images
 .map(makeGalleryMarkup)
 .join('');
 
-listOfGalleryRef.innerHTML = makeGallery;
+
+listOfGalleryRef.insertAdjacentHTML("afterbegin", makeGallery);
