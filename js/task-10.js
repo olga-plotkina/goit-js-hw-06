@@ -8,43 +8,26 @@ const inputRef = document.querySelector('input');
 const divRef = document.querySelector('#boxes');
 
 
-let sizeOfBox = 30;
-let stringForBoxes = '';
+const SIZE_OF_BOX = 30;
+let currentSizeOfBox = SIZE_OF_BOX;
 
 
-inputRef.addEventListener('change', (event) => {
-  let lengthOfCollecton = event.currentTarget.value;
+buttonCreateRef.addEventListener('click', () => {
+  const lengthOfCollecton = inputRef.value;
+  let stringForBoxes = '';
+
+  for (let i = 1; i <= lengthOfCollecton; i++) {
+
+    stringForBoxes += `<div style="width: ${currentSizeOfBox}px; height:${currentSizeOfBox}px; background-color:${getRandomHexColor()}"></div>`;
+    currentSizeOfBox += 10;
+  }
+    divRef.insertAdjacentHTML('beforeend', stringForBoxes);
   
-  buttonCreateRef.addEventListener('click', () => {
-    createBoxes(lengthOfCollecton);
-
-    inputRef.addEventListener('input', (event) => {
-      lengthOfCollecton = 0;
-    });
-    });
-    
-})
+});
 
   buttonDestroyRef.addEventListener('click', () => {
-    destroyBoxes();
+    divRef.innerHTML = '';
+    inputRef.value = '';
+    currentSizeOfBox = SIZE_OF_BOX;
   });
 
-
-function createBoxes(amount) { 
-
-  for (let i = 1; i <= amount; i +=1) {
-
-      const divMarkup = `<div style="width: ${sizeOfBox}px; height:${sizeOfBox}px; background-color:${getRandomHexColor()}">${i}</div>`;
-      stringForBoxes += divMarkup;
-      sizeOfBox += 10;
-     
-      divRef.innerHTML = stringForBoxes;
-  };
-}
-
-function destroyBoxes() {
-  divRef.innerHTML = '';
-  inputRef.value = '';
-  sizeOfBox = 30;
-  stringForBoxes = '';
-};

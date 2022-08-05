@@ -7,20 +7,20 @@ function onFormSubmit (event) {
 
     const formElements = event.currentTarget.elements;
 
-    const formData = {};
     
-    for (let i = 0; i < formElements.length - 1; i += 1) {
-        if (!formElements[i].value) {
-            alert('Усі поля мають бути заповнені!');
-            return;
+    for (let i = 0; i < formElements.length; i++) {
+        if (formElements[i].tagName.toUpperCase() === 'BUTTON') {
+            continue;
         } 
-        else {
-            formData[formElements.email.name] = formElements.email.value;
-            formData[formElements.password.name] = formElements.password.value;
-            
+        if (!formElements[i].value) {
+            alert ('Усі поля мають бути заповнені!');
+            return;
         }
+
+        const formData = {};
+        formData[formElements.email.name] = formElements.email.value;
+        formData[formElements.password.name] = formElements.password.value;
         
-   
     };
     console.log(formData);
     form.reset();
